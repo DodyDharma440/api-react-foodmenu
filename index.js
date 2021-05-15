@@ -4,6 +4,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+import userRoutes from "./routes/users.js";
+
 dotenv.config();
 
 const app = express();
@@ -16,6 +18,8 @@ const options = {
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+
+app.use("/user", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("API food menu");
