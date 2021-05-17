@@ -59,7 +59,7 @@ export const signUp = async (req, res) => {
     }
 
     if (password !== confirmPassword) {
-      return res.json({
+      return res.status(400).json({
         message: "Password doesn't match",
       });
     }
