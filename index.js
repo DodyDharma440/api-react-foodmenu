@@ -22,7 +22,9 @@ app.use(cors());
 app.use("/user", userRoutes);
 
 app.get("/", (req, res) => {
-  res.send("API food menu");
+  res.send(
+    "API food menu. Visit https://react-foodmenu-dodydharma440.vercel.app"
+  );
 });
 
 mongoose

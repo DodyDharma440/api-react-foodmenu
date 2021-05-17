@@ -99,6 +99,18 @@ export const signUp = async (req, res) => {
 export const deleteUser = async (req, res) => {
   const { id } = req.params;
 
+  if (!req.userId) {
+    return res.status(401).json({
+      message: "Authentication needed",
+    });
+  }
+
+  if (id !== req.userId) {
+    return res.status(400).json({
+      message: "You can't delete other user",
+    });
+  }
+
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res.status(404).json({
       message: "Data not found with this id",
@@ -111,3 +123,5 @@ export const deleteUser = async (req, res) => {
     message: "User is successfuly deleted",
   });
 };
+
+export const editProfile = async (req, res) => {};
