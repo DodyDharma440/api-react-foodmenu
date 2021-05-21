@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import userRoutes from "./routes/users.js";
+import favouritesRoutes from "./routes/favourites.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use("/user", userRoutes);
+app.use("/favourites", favouritesRoutes);
 
 app.get("/", (req, res) => {
   res.send(
