@@ -26,7 +26,10 @@ export const addFavMeals = async (req, res) => {
     });
   }
 
-  const isFavourited = await Meals.findOne({ idMeal: meal.idMeal });
+  const isFavourited = await Meals.findOne({
+    creator: req.userId,
+    idMeal: meal.idMeal,
+  });
 
   if (isFavourited) {
     return res.status(409).json({

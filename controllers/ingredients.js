@@ -27,6 +27,7 @@ export const addFavIngredients = async (req, res) => {
   }
 
   const isFavourited = await Ingredients.findOne({
+    creator: req.userId,
     idIngredient: ingredient.idIngredient,
   });
 
