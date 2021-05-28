@@ -1,14 +1,10 @@
 import Ingredients from "../models/ingredients.js";
 
-const handleUnauth = () => {
-  return res.status(401).json({
-    message: "Authentication needed",
-  });
-};
-
 export const getFavIngredients = async (req, res) => {
   if (!req.userId) {
-    handleUnauth();
+    return res.status(401).json({
+      message: "Authentication needed",
+    });
   }
 
   try {
@@ -25,7 +21,9 @@ export const addFavIngredients = async (req, res) => {
   const ingredient = req.body;
 
   if (!req.userId) {
-    handleUnauth();
+    return res.status(401).json({
+      message: "Authentication needed",
+    });
   }
 
   const isFavourited = await Ingredients.findOne({
@@ -61,7 +59,9 @@ export const removeFavIngredients = async (req, res) => {
   const { id } = req.params;
 
   if (!req.userId) {
-    handleUnauth();
+    return res.status(401).json({
+      message: "Authentication needed",
+    });
   }
 
   if (!id) {

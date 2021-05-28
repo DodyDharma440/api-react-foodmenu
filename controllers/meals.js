@@ -1,16 +1,10 @@
-import mongoose from "mongoose";
-
 import Meals from "../models/meals.js";
-
-const handleUnauth = () => {
-  return res.status(401).json({
-    message: "Authentication needed",
-  });
-};
 
 export const getFavMeals = async (req, res) => {
   if (!req.userId) {
-    handleUnauth();
+    return res.status(401).json({
+      message: "Authentication needed",
+    });
   }
 
   try {
@@ -27,7 +21,9 @@ export const addFavMeals = async (req, res) => {
   const meal = req.body;
 
   if (!req.userId) {
-    handleUnauth();
+    return res.status(401).json({
+      message: "Authentication needed",
+    });
   }
 
   const isFavourited = await Meals.findOne({ idMeal: meal.idMeal });
@@ -61,7 +57,9 @@ export const removeFavMeals = async (req, res) => {
   const { id } = req.params;
 
   if (!req.userId) {
-    handleUnauth();
+    return res.status(401).json({
+      message: "Authentication needed",
+    });
   }
 
   if (!id) {
