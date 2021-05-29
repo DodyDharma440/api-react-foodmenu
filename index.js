@@ -24,9 +24,7 @@ app.use("/user", userRoutes);
 app.use("/favourites", favouritesRoutes);
 
 app.get("/", (req, res) => {
-  res.send(
-    "API food menu. Visit https://react-foodmenu-dodydharma440.vercel.app"
-  );
+  res.send("Hai :D");
 });
 
 mongoose
