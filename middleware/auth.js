@@ -5,7 +5,7 @@ const JWT_KEY = "secret";
 const auth = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    const isCustomAuth = token < 500;
+    const isCustomAuth = token.length < 500;
 
     let decodedData;
 
